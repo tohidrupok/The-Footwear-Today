@@ -1,0 +1,342 @@
+{% extends 'index.html' %} 
+{% block body%} 
+{% load static %}
+
+<style> 
+
+       .icon {
+          width: 30px; /* Adjust the width as needed */
+          height: 30px; /* Adjust the height as needed */
+      } 
+      .icon2 {
+    width: 100px;
+    height: 100px;
+      }
+      
+      .cart {
+          max-height: 400px; /* Adjust the max-height as needed */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .cart .p-3 {
+          padding: 1rem;
+      }
+
+      .cart .img-fluid {
+          max-height: 200px; /* Adjust the max-height as needed */
+          max-width: 100%; /* Ensure the image doesn't exceed the cart's width */
+          object-fit: contain; /* Maintain aspect ratio and fit within the container */
+      }
+
+      .buttons {
+          margin-top: 10px; /* Adjust the margin as needed */
+      }
+
+      .buttons .btn {
+          margin-right: 5px; /* Adjust the margin between buttons as needed */
+      }
+      .text-justify {
+      text-align: justify;
+    }
+
+      
+
+</style>
+<body>
+
+  <!-- Spinner Start -->
+  <div
+    id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+   >
+    <div class="spinner"></div>
+  </div>
+  <!-- Spinner End -->
+
+  <!-- Navbar & Carousel Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <a href="{% url 'logo' %}" class="navbar-brand p-0">
+        <h1 class="m-0">
+          <img
+            class="w-100"
+            src="{% static 'img/logo/xlogo.png' %}"
+            height="80px"
+            width="100px"
+            alt="Image"
+          />
+        </h1>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >About Us</a
+            >
+            <div class="dropdown-menu m-0">
+              <a href="{% url 'about' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/information about factories.png' %}"
+                  alt="Newsletter Subscription Icon"
+                  class="icon"
+                />
+                Who We Are
+              </a>
+              <a href="{% url 'missionvision' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Industries Interactive Maps.png' %}"
+                  alt="Industry News and Events Icon"
+                  class="icon"
+                />
+                Mission and Vision
+              </a>
+              <a href="{% url 'choose' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/list of factorics.png' %}"
+                  alt="Industry News and Events Icon"
+                  class="icon"
+                />
+                Why you Choose Us
+              </a>
+              <a href="{% url 'management_massage' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Supply Chain Information.png' %}"
+                  alt="Industry News and Events Icon"
+                  class="icon"
+                />
+                Message From Management
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >Directories</a
+            >
+            <div class="dropdown-menu m-0">
+              <a href="{% url 'InternationaCompany' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/word2.png' %}"
+                  alt="Supply Chain Icon"
+                  class="icon"
+                />
+                International Buyer
+              </a>
+
+              <a href="{% url 'supply_chain' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Supply Chain Information.png' %}"
+                  alt="Supply Chain Icon"
+                  class="icon"
+                />
+                Supply Chain
+              </a> 
+
+              <a href="{% url 'option' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/industries.png' %}"
+                  alt="Supply Chain Icon"
+                  class="icon"
+                />
+               Core Industries
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >Service</a
+            >
+            <div class="dropdown-menu m-0">
+              <a href="{% url 'resource_library' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Factory & Tools Manufacturers Compnay List.png' %}"
+                  alt="Resource Library Icon"
+                  class="icon"
+                />
+                Resource Library
+              </a>
+              <a href="{% url 'requirement_list' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Certifications and Standards.png' %}"
+                  alt="Certifications and Standards Icon"
+                  class="icon"
+                />
+                Certifications and Standards
+              </a>
+              <!-- <a href="{% url 'list_factory' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Industries Interactive Maps.png' %}"
+                  alt="Interactive Maps Icon"
+                  class="icon"
+                />
+                Interactive Maps
+              </a>  -->
+
+              <a href="{% url 'list_factory' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/Industries Interactive Maps.png' %}"
+                  alt="Interactive Maps Icon"
+                  class="icon"
+                />
+                Factory Setup
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >News and Events</a
+            >
+            <div class="dropdown-menu m-0">
+              <a href="{% url 'news_all' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/newsletter subscription icon.png' %}"
+                  alt="Newsletter Subscription Icon"
+                  class="icon"
+                />
+                News
+              </a>
+              <a href="{% url 'event' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/industry news and events icon.png' %}"
+                  alt="Industry News and Events Icon"
+                  class="icon"
+                />
+                Events
+              </a>
+              <a href="{% url 'gallery' %}" class="dropdown-item">
+                <img
+                  src="{% static 'img/icon/industry news and events icon.png' %}"
+                  alt="Industry News and Events Icon"
+                  class="icon"
+                />
+               Our Gallery
+              </a>
+            </div>
+          </div>
+          <a href="{% url 'leaders' %}" class="nav-item nav-link"
+            >Industry Leader</a
+          >
+          <a href="{% url 'job_list' %}" class="nav-item nav-link"
+            >Job Portal</a
+          >
+          <a href="{% url 'blog' %}" class="nav-item nav-link">Blog</a>
+          <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>  
+
+ 
+    <div
+      id="header-carousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="w-100" src="{% static 'img/document.jpg'%}" alt="Image" />
+          <div
+            class="carousel-caption d-flex flex-column align-items-center justify-content-center"
+          >
+            <div class="p-3" style="max-width: 900px">        
+             <h1 class="display-1 text-white mb-md-4 animated zoomIn">
+                Certifications  
+              </h1>
+     
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#header-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#header-carousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <!-- Navbar & Carousel End -->
+
+
+  <!-- Service Start -->
+  <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+      <div
+        class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+        style="max-width: 1600px"
+      >
+        <h5 class="fw-bold text-danger text-uppercase">Certifications and Standards of Footware Today</h5>
+        <h6 class="text-justify">
+       Embark on a journey through the labyrinth of certifications and industry standards within Bangladesh's vibrant footwear sector. Our platform equips you with the tools to ensure compliance, guarantee quality, and champion sustainability. Discover the array of certifications essential for footwear exports, meeting buyer expectations, and aligning with regulatory mandates. From BSCI status to ISO certifications, from safety standards to ethical sourcing guidelines, we provide a comprehensive guide to empower your business. Stay ahead in the competitive marketplace by mastering global benchmarks and leveraging our expertise.
+       This section offers a treasure trove of insights into various industry certifications and product certifications vital for footwear exports. Dive into the world of BSCI, SEDEX, ISO, and other quality assurance standards. Explore safety norms, environmental certifications, and ethical sourcing practices. Navigate through product testing requirements, trade compliance regulations, and certification bodies. Elevate your knowledge with training programs.
+        </h6>
+         <h5 class="fw-bold text-danger text-uppercase">Classification</h5>
+
+     </div>
+      <div class="row g-5">
+        {% for req in requirements %}
+        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+          <div
+            class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+          >
+            <div >   
+              
+              <img
+                  src="{{ req.icon.url }}"
+                  alt="Newsletter Subscription Icon"
+                  class="icon2"
+                />       
+            </div>
+            <h5 class="mb-3">{{ req.title }}</h5>
+            <p class="m-0">
+              {{ req.short_contant }}
+            </p>
+            <a class="btn btn-lg btn-danger rounded" href="{% url 'requirement' requirement_slug=req.slug %}">
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+       {% endfor %}
+         </div>
+    </div>
+  </div>
+  <!-- Service End -->
+
+{% endblock %}
+</body>
